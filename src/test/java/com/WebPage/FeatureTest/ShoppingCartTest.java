@@ -11,6 +11,7 @@ public class ShoppingCartTest extends FeatureTest{
 	By testItemImg = By.xpath("//*[@id=\"homefeatured\"]/li[4]/div/div[1]/div/a[1]/img");
   @Test
   public void testAddItemToShoppingCart() {
+	  
 //	  WebElement testItemAddToCartButton = driver.findElement(testItemAddToCartButtonLocation);
 //	  
 //	  JavascriptExecutor action = (JavascriptExecutor) driver;
