@@ -6,6 +6,7 @@
       <class name="com.WebPage.FeatureTest.SearchBoxTest">
         <methods>
           <include name="testSearchBox"/>
+          <include name="beforeClass"/>
           <include name="afterSuite"/>
           <include name="beforeSuite"/>
         </methods>

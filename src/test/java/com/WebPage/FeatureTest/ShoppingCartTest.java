@@ -1,17 +1,14 @@
 package com.WebPage.FeatureTest;
 
 
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertFalse;
-import static org.testng.Assert.assertTrue;
-
+import org.testng.annotations.Test;
+import org.testng.AssertJUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.testng.annotations.Test;
 import java.util.List;
 
 
@@ -36,7 +33,7 @@ public class ShoppingCartTest extends FeatureTest{
 		return cart.findElements(By.tagName("tr"));
 	}
 	
-  @Test(enabled=false)
+  @Test
   public void testAddItemToShoppingCart() {  
 	  
 	  By cartPopUpWindowLocation = By.cssSelector("div#layer_cart[style*=\"display: block\"]");  //It will only be visible when it pops up
@@ -57,9 +54,9 @@ public class ShoppingCartTest extends FeatureTest{
 		  wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(cartPopUpWindowLocation));  
 		  WebElement cartPopUpWindow = driver.findElement(cartPopUpWindowLocation);
 		  
-		  assertEquals(cartPopUpWindow.findElement(By.id("layer_cart_product_title")).getText(), testItemProductName, "Product's name in the pop-up notification doesn't match product's name advertised");
-		  assertEquals(cartPopUpWindow.findElement(By.id("layer_cart_product_quantity")).getText(), "1", "Product advertised should have been added to cart once, but quantity doesn't show 1 in pop-up notification");
-		  assertEquals(cartPopUpWindow.findElement(By.id("layer_cart_product_price")).getText(), testItemPrice, "Product's price in the pop-up notification doesn't match product's price advertised");
+		  AssertJUnit.assertEquals("Product's name in the pop-up notification doesn't match product's name advertised", testItemProductName, cartPopUpWindow.findElement(By.id("layer_cart_product_title")).getText() );
+		  AssertJUnit.assertEquals("Product advertised should have been added to cart once, but quantity doesn't show 1 in pop-up notification", "1",cartPopUpWindow.findElement(By.id("layer_cart_product_quantity")).getText());
+		  AssertJUnit.assertEquals("Product's price in the pop-up notification doesn't match product's price advertised", testItemPrice, cartPopUpWindow.findElement(By.id("layer_cart_product_price")).getText());
 	  
 		  action.moveToElement(cartPopUpWindow.findElement(By.cssSelector("span.continue.btn.btn-default.button.exclusive-medium"))).click().build().perform();
 		  
@@ -73,7 +70,7 @@ public class ShoppingCartTest extends FeatureTest{
 				  isTestItemInCart=true;
 			  }
 		  }
-		  assertTrue(isTestItemInCart, "Cart doesn't contain the item");
+		  AssertJUnit.assertTrue("Cart doesn't contain the item", isTestItemInCart);
 	  }
 	  catch (TimeoutException e) {
 			System.out.println("Element didn't load correctly");
@@ -84,7 +81,7 @@ public class ShoppingCartTest extends FeatureTest{
 
   }
   
-  @Test(enabled=false)
+  @Test
   public void testRemoveItemFromShoppingCart() {  
 	  //testAddItemToShoppingCart() need to be run prior the execution of this case
 	  Boolean isTestItemInCart = true;
@@ -106,7 +103,7 @@ public class ShoppingCartTest extends FeatureTest{
 		  }
 	  }
 	  
-	  assertFalse(isTestItemInCart, "Item wasn't deleted when clicked the delete button");
+	  AssertJUnit.assertFalse("Item wasn't deleted when clicked the delete button", isTestItemInCart);
   }
 
 }

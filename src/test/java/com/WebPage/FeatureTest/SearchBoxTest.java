@@ -1,15 +1,16 @@
 package com.WebPage.FeatureTest;
 
-import static org.testng.Assert.assertFalse;
-import static org.testng.Assert.assertTrue;
-
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
+import org.testng.AssertJUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.testng.annotations.Test;
+
+
 
 
 public class SearchBoxTest extends FeatureTest{
@@ -17,7 +18,11 @@ public class SearchBoxTest extends FeatureTest{
 	By searchBoxLocation = By.id("search_query_top");
 	By resultLocation = By.cssSelector("div.product-count");
 	By noResultWarningLocation = By.cssSelector("p.alert.alert-warning");
-	
+
+	  @BeforeClass
+	  public void beforeSuite() {
+		  driver.get(API_BASE_URI);
+	  }
 	
 	private boolean isThereResults(String input) {
 		Boolean output = true;
@@ -29,7 +34,7 @@ public class SearchBoxTest extends FeatureTest{
 			searchBox.submit();
 		}
 		catch(NoSuchElementException e) {
-			System.out.print("Search box element doesn't exist");
+			System.out.println("Search box element doesn't exist");
 			output= false;
 		}
 		catch (TimeoutException e) {
@@ -47,19 +52,19 @@ public class SearchBoxTest extends FeatureTest{
 			output= false;
 		}
 		catch (TimeoutException e) {
-			System.out.print("Page took too long to respond");
+			System.out.println("Page took too long to respond");
 			output = false;
 		}
 		
 		return output;
 	}
 	
-  @Test(enabled=false)
+  @Test
   public void testSearchBox() {
 	  String negativeCase = "@#$%^^$@";
 	  String positiveCase = "printed";
-	  assertTrue(isThereResults(positiveCase), "No result found for an item that should be available: "+ positiveCase);
-	  assertFalse(isThereResults(negativeCase), "There was a result for an item that shouldn't be available: " + negativeCase);
+	  AssertJUnit.assertTrue("No result found for an item that should be available: "+ positiveCase, isThereResults(positiveCase));
+	  AssertJUnit.assertFalse("There was a result for an item that shouldn't be available: " + negativeCase, isThereResults(negativeCase));
 	
   }
   
