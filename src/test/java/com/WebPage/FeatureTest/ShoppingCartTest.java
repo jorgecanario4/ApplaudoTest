@@ -11,18 +11,41 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import java.util.List;
 
+/**
+ * This class is suppose to test all the functionalities related to shopping cart in the web page.
+ * 
+ * @author Jorge Canario
+ *
+ */
 
 public class ShoppingCartTest extends FeatureTest{
 	// Still pending some DRY principles improvement in this class
+	
+	/**
+	 * @value testItemProductName 	Since the ID in the HTML is something that not necessarily represent the ID of the element at the moment of purchase. The best way to identify the element is with its name and price. This variable contains the name of the element we've selected for testing purposes
+	 * @value testItemPrice			Since the ID in the HTML is something that not necessarily represent the ID of the element at the moment of purchase. The best way to identify the element is with its name and price. This variable contains the price of the element we've selected for testing purposes
+	 */
 	private String testItemProductName;
 	private String testItemPrice;
 	
 	
+	
+	/**
+	 * This method allow anyone navigate from index page to shopping cart page
+	 * @author Jorge Canario
+	 */
 	private void navigateToCart() {
 		By shoppingCartLocation = By.cssSelector("a[href][title*=\"View my shopping cart\"]");
 		action.moveToElement(driver.findElement(shoppingCartLocation)).click().build().perform();
 
 	}
+	
+	/**
+	 * This method allow anyone to get all the items in the cart, if and only if it is already in the shopping cart page
+	 * 
+	 * @return all the items in the cart
+	 * @author Jorge Canario
+	 */
 	
 	private List <WebElement> getCartItems(){
 		By cartLocation = By.xpath("//*[@id=\"cart_summary\"]/tbody");
@@ -33,6 +56,12 @@ public class ShoppingCartTest extends FeatureTest{
 		return cart.findElements(By.tagName("tr"));
 	}
 	
+	/**
+	 * This method ensures that the notification of the successful addition to cart contains the right name, quantity and price of the element clicked (the test element)
+	 * Also, this method confirms inside the shopping cart that the element clicked (the test element) made it to the shopping cart
+	 * 
+	 * @author Jorge Canario
+	 */
   @Test
   public void testAddItemToShoppingCart() {  
 	  
@@ -73,17 +102,22 @@ public class ShoppingCartTest extends FeatureTest{
 		  AssertJUnit.assertTrue("Cart doesn't contain the item", isTestItemInCart);
 	  }
 	  catch (TimeoutException e) {
-			Reporter.log("Element didn't load correctly");
+			Reporter.log("[ERROR:] Element didn't load correctly");
 	  }
 	  catch(NoSuchElementException e) {
-		  	Reporter.log("Element doesn't exist");
+		  	Reporter.log("[ERROR:] Element doesn't exist");
 	  }
 
   }
   
+  /**
+   * This test must be ran after estAddItemToShoppingCart().
+   * It takes the advantage of already being inside the shopping cart page, creates a list with all items delete the test item and then re-checks to see if it is still in the shopping cart
+   * 
+   * @author Jorge Canario
+   */
   @Test
   public void testRemoveItemFromShoppingCart() {  
-	  //testAddItemToShoppingCart() need to be run prior the execution of this case
 	  Boolean isTestItemInCart = true;
 	  try {
 		  List <WebElement> cartItems = getCartItems();
@@ -105,10 +139,10 @@ public class ShoppingCartTest extends FeatureTest{
 		  } 
 	  }
 	  catch (TimeoutException e) {
-			Reporter.log("Element didn't load correctly");
+			Reporter.log("[ERROR:] Element didn't load correctly");
 	  }
 	  catch(NoSuchElementException e) {
-		  	Reporter.log("Element doesn't exist");
+		  	Reporter.log("[ERROR:] Element doesn't exist");
 	  }
 	 
 	  

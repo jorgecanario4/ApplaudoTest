@@ -10,12 +10,28 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 
-
+/**
+ * This class is in charge of the testing of the API that involves the characters endpoint
+ * 
+ * @author Jorge Canario
+ *
+ */
 public class CharacterTest {
+	/**
+	 * 
+	 * @value API_BASE_URI			Specifies the main URL from where all other endpoint will operate
+	 * @value CHARACTERS_BY_NAME	Specifies the characters endpoint using a filter by name function
+	 * @value ALL_CHARACTERS		Specifies the characters endpoint using no filter at all
+	 */
 	private final String API_BASE_URI = "https://www.breakingbadapi.com/api";
 	private final String CHARACTERS_BY_NAME = "/characters?name=";
-	private final String ALL_CHARACTERS = "/characters?name=";
+	private final String ALL_CHARACTERS = "/characters";
 	
+	/**
+	 * 
+	 * This test request the information of character "Walter White", ensures the response from the request was successful and prints the birthday of character "Walter White" in the console
+	 * @author Jorge Canario
+	 */
   @Test
   public void testGetCharacterByName() {
 	  baseURI = API_BASE_URI;
@@ -37,7 +53,12 @@ public class CharacterTest {
 	 
   }
   
-  
+  /**
+   * This test request all characters and ensures that response is valid.
+   * verifies all the expected fields are coming for the elements in the response. (it takes the first element as reference).
+   * Also, saves the name of the character and the actor who depicted it inside a POJOObject and prints in console with a requested format.
+   * @author Jorge Canario
+   */
   @Test
   public void testGetAllCharacters() {
 	  baseURI = API_BASE_URI;

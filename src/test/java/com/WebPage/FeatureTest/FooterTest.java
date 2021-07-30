@@ -11,13 +11,32 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
-
+/**
+ * This class should take the responsibility to test informational changes in the page.
+ * For sake of this technical exam is it just testing the correct data is contained in the footer's store information
+ * 
+ * Test extends from FeatureTest class to make its manipulation more easy
+ * @author Jorge Canario
+ *
+ */
 
 public class FooterTest extends FeatureTest{
+	/**
+	 * @value footerInformationLotation			Contains the locator to get to the footer's store infomation section. This location could change if developer change the ID of the element in the HTML
+	 * @value expectedFooterInformations		Contains a List with all the information we want to make sure is contained in the footer
+	 */
 	private By footerInformationLotation = By.id("block_contact_infos"); 
 	private ArrayList<String> expectedFooterInformations = new ArrayList<>(Arrays.asList("Store information\nSelenium Framework, Research Triangle Park, North Carolina, USA", 
               "Call us now: (347) 466-7432",
               "Email: support@seleniumframework.com" ));
+	
+	/**
+	 * This test scrolls to the bottom of the page independent from any element in the page and
+	 * confirms all store information is the expected
+	 * 
+	 * It compares and only if one of the expected information differs that would be enough to trigger an Assertion Exception. Also, if the store information is not found or if it didn't load correctly test will fail
+	 * @author Jorge Canario
+	 */
 	
   @Test
   public void validateFooterInformation() {
