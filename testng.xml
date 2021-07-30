@@ -3,9 +3,9 @@
 <suite parallel="tests" name="ApplaudoTechnicalExam">
 	<test thread-count="5" parallel="tests" name="WebPageTest">
 		<classes>
-	<!-- 		<class name="com.WebPage.FeatureTest.FooterTest" />
+	 		<class name="com.WebPage.FeatureTest.FooterTest" />
 		    <class name="com.WebPage.FeatureTest.ShoppingCartTest" />
-	 -->		<class name="com.WebPage.FeatureTest.SearchBoxTest" />
+	 		<class name="com.WebPage.FeatureTest.SearchBoxTest" />
 		</classes>
 	</test> <!-- WebPageTest -->
 	<test thread-count="5" parallel="tests" name="EndpointTest">
