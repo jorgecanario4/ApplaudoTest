@@ -3,6 +3,13 @@
 <suite parallel="tests" name="Failed suite [ApplaudoTechnicalExam]" guice-stage="DEVELOPMENT">
   <test thread-count="5" parallel="tests" name="WebPageTest(failed)">
     <classes>
+      <class name="com.WebPage.FeatureTest.FooterTest">
+        <methods>
+          <include name="afterSuite"/>
+          <include name="beforeSuite"/>
+          <include name="validateFooterInformation"/>
+        </methods>
+      </class> <!-- com.WebPage.FeatureTest.FooterTest -->
       <class name="com.WebPage.FeatureTest.SearchBoxTest">
         <methods>
           <include name="testSearchBox"/>
@@ -10,6 +17,13 @@
           <include name="beforeSuite"/>
         </methods>
       </class> <!-- com.WebPage.FeatureTest.SearchBoxTest -->
+      <class name="com.WebPage.FeatureTest.ShoppingCartTest">
+        <methods>
+          <include name="afterSuite"/>
+          <include name="testRemoveItemFromShoppingCart"/>
+          <include name="beforeSuite"/>
+        </methods>
+      </class> <!-- com.WebPage.FeatureTest.ShoppingCartTest -->
     </classes>
   </test> <!-- WebPageTest(failed) -->
 </suite> <!-- Failed suite [ApplaudoTechnicalExam] -->
