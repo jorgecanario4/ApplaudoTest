@@ -10,20 +10,6 @@
           <include name="validateFooterInformation"/>
         </methods>
       </class> <!-- com.WebPage.FeatureTest.FooterTest -->
-      <class name="com.WebPage.FeatureTest.SearchBoxTest">
-        <methods>
-          <include name="testSearchBox"/>
-          <include name="afterSuite"/>
-          <include name="beforeSuite"/>
-        </methods>
-      </class> <!-- com.WebPage.FeatureTest.SearchBoxTest -->
-      <class name="com.WebPage.FeatureTest.ShoppingCartTest">
-        <methods>
-          <include name="afterSuite"/>
-          <include name="testRemoveItemFromShoppingCart"/>
-          <include name="beforeSuite"/>
-        </methods>
-      </class> <!-- com.WebPage.FeatureTest.ShoppingCartTest -->
     </classes>
   </test> <!-- WebPageTest(failed) -->
 </suite> <!-- Failed suite [ApplaudoTechnicalExam] -->
