@@ -12,9 +12,9 @@ import java.util.Iterator;
 
 
 public class CharacterTest {
-	final String API_BASE_URI = "https://www.breakingbadapi.com/api";
-	final String CHARACTERS_BY_NAME = "/characters?name=";
-	final String ALL_CHARACTERS = "/characters?name=";
+	private final String API_BASE_URI = "https://www.breakingbadapi.com/api";
+	private final String CHARACTERS_BY_NAME = "/characters?name=";
+	private final String ALL_CHARACTERS = "/characters?name=";
 	
   @Test
   public void testGetCharacterByName() {
@@ -52,8 +52,10 @@ public class CharacterTest {
 	  extract().
 	  	response().jsonPath();
 	  
-	  String testJsonfields =json.getList("").get(0).toString();
 //	  -------------------------------------------------------------------
+	  //Validate existence of all expected fields in response JSON
+	  String testJsonfields =json.getList("").get(0).toString();
+
 	  Iterator<String> jsonExpectedField = new ArrayList<>(Arrays.asList("char_id", "name", "birthday", "occupation",
               "img", "status", "appearance", "nickname", "portrayed", 
               "better_call_saul_appearance" )).iterator();
@@ -64,6 +66,7 @@ public class CharacterTest {
 	  }
 
 //	  -------------------------------------------------------------------
+	  //Saving into POJO and printing out as requested
 	  POJOObject data = new POJOObject();
 	  
 	  Iterator<Object> characterNames = json.getList("name").iterator();
@@ -78,7 +81,7 @@ public class CharacterTest {
 		  data.saveActor(actor);
 		  
 		  System.out.println("Character name: " + name + "\nPortrayed: "
-		  			+ actor +"\n"+lineSeparator);
+		  			+ actor +"\n"+lineSeparator);   //Printing out with requested format
 	  }
 
 	  data.commitSave();   //Data saved to POJO as requested

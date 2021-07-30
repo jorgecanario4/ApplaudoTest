@@ -14,8 +14,8 @@ import org.openqa.selenium.WebElement;
 
 
 public class FooterTest extends FeatureTest{
-	protected By footerInformationLotation = By.id("block_contact_infos"); 
-	protected ArrayList<String> expectedFooterInformations = new ArrayList<>(Arrays.asList("Store information\nSelenium Framework, Research Triangle Park, North Carolina, USA", 
+	private By footerInformationLotation = By.id("block_contact_infos"); 
+	private ArrayList<String> expectedFooterInformations = new ArrayList<>(Arrays.asList("Store information\nSelenium Framework, Research Triangle Park, North Carolina, USA", 
               "Call us now: (347) 466-7432",
               "Email: support@seleniumframework.com" ));
 	

@@ -15,9 +15,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class SearchBoxTest extends FeatureTest{
 	
-	protected By searchBoxLocation = By.id("search_query_top");
-	protected By resultLocation = By.cssSelector("div.product-count");
-	protected By noResultWarningLocation = By.cssSelector("p.alert.alert-warning");
+	private By searchBoxLocation = By.id("search_query_top");
+	private By resultLocation = By.cssSelector("div.product-count");
+	private By noResultWarningLocation = By.cssSelector("p.alert.alert-warning");
 
 	@BeforeClass
 	public void beforeClass() {
