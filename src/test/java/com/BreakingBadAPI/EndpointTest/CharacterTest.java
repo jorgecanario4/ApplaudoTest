@@ -43,7 +43,6 @@ public class CharacterTest {
   @Test
   public void testGetAllCharacters() {
 	  baseURI = API_BASE_URI;
-	  String lineSeparator ="------------------------------------------------------";
 	  POJOObject data = new POJOObject();
 	  Iterator<String> jsonExpectedField = new ArrayList<>(Arrays.asList("char_id", "name", "birthday", "occupation",
               "img", "status", "appearance", " nickname", "portrayed", 
@@ -69,6 +68,7 @@ public class CharacterTest {
 	  Iterator<Object> characterNames = json.getList("name").iterator();
 	  Iterator<Object> characterActors = json.getList("portrayed").iterator();
 	  
+	  String lineSeparator ="------------------------------------------------------";
 	  while(characterNames.hasNext()) {
 		  String name = characterNames.next().toString() ;
 		  String actor = characterActors.next().toString();
