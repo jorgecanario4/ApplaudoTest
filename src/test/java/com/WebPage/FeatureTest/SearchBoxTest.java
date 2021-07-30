@@ -3,7 +3,7 @@ package com.WebPage.FeatureTest;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import org.testng.AssertJUnit;
-
+import org.testng.Reporter;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.TimeoutException;
@@ -34,11 +34,11 @@ public class SearchBoxTest extends FeatureTest{
 			searchBox.submit();
 		}
 		catch(NoSuchElementException e) {
-			System.out.println("Search box element doesn't exist");
+			Reporter.log("Search box element doesn't exist");
 			output= false;
 		}
 		catch (TimeoutException e) {
-			System.out.print("Page didn't load correctly");
+			Reporter.log("Page didn't load correctly");
 			output = false;
 		}
 		
@@ -46,14 +46,16 @@ public class SearchBoxTest extends FeatureTest{
 		try {
 			wait.until(ExpectedConditions.presenceOfElementLocated(resultLocation));
 		} 
-		catch(NoSuchElementException e) {
-			wait.until(ExpectedConditions.presenceOfElementLocated(noResultWarningLocation));
-			System.out.println("Page confirmed there was no result found");
-			output= false;
-		}
 		catch (TimeoutException e) {
-			System.out.println("Page took too long to respond");
-			output = false;
+			try {
+				wait.until(ExpectedConditions.presenceOfElementLocated(noResultWarningLocation));
+			}
+			catch(TimeoutException ex) {
+				Reporter.log("Page \"No Result\" banner didn't show up");
+				output= false;
+			}
+			Reporter.log("Page confirmed there was no result found");
+			output= false;
 		}
 		
 		return output;

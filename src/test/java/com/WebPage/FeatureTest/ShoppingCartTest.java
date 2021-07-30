@@ -3,7 +3,7 @@ package com.WebPage.FeatureTest;
 
 import org.testng.annotations.Test;
 import org.testng.AssertJUnit;
-
+import org.testng.Reporter;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.TimeoutException;
@@ -73,10 +73,10 @@ public class ShoppingCartTest extends FeatureTest{
 		  AssertJUnit.assertTrue("Cart doesn't contain the item", isTestItemInCart);
 	  }
 	  catch (TimeoutException e) {
-			System.out.println("Element didn't load correctly");
+			Reporter.log("Element didn't load correctly");
 	  }
 	  catch(NoSuchElementException e) {
-			System.out.println("Element doesn't exist");
+		  	Reporter.log("Element doesn't exist");
 	  }
 
   }
@@ -85,23 +85,32 @@ public class ShoppingCartTest extends FeatureTest{
   public void testRemoveItemFromShoppingCart() {  
 	  //testAddItemToShoppingCart() need to be run prior the execution of this case
 	  Boolean isTestItemInCart = true;
-	  List <WebElement> cartItems = getCartItems();
-	  
-	  for(WebElement item : cartItems) {
-		  if(item.findElement(By.cssSelector("td.cart_description")).getText().contains(testItemProductName) 
-				  && item.findElement(By.cssSelector("td.cart_unit")).getText().contains(testItemPrice)) {
-			  action.moveToElement(item.findElement(By.cssSelector("a.cart_quantity_delete[title=\"Delete\""))).click().build().perform();
+	  try {
+		  List <WebElement> cartItems = getCartItems();
+		  
+		  for(WebElement item : cartItems) {
+			  if(item.findElement(By.cssSelector("td.cart_description")).getText().contains(testItemProductName) 
+					  && item.findElement(By.cssSelector("td.cart_unit")).getText().contains(testItemPrice)) {
+				  action.moveToElement(item.findElement(By.cssSelector("a.cart_quantity_delete[title=\"Delete\""))).click().build().perform();
+			  }
 		  }
+		  
+		  cartItems = getCartItems();
+		  
+		  for(WebElement item : cartItems) {
+			  if(item.findElement(By.cssSelector("td.cart_description")).getText().contains(testItemProductName) 
+					  && item.findElement(By.cssSelector("td.cart_unit")).getText().contains(testItemPrice)) {
+				  isTestItemInCart =false;
+			  }
+		  } 
 	  }
-	  
-	  cartItems = getCartItems();
-	  
-	  for(WebElement item : cartItems) {
-		  if(item.findElement(By.cssSelector("td.cart_description")).getText().contains(testItemProductName) 
-				  && item.findElement(By.cssSelector("td.cart_unit")).getText().contains(testItemPrice)) {
-			  isTestItemInCart =false;
-		  }
+	  catch (TimeoutException e) {
+			Reporter.log("Element didn't load correctly");
 	  }
+	  catch(NoSuchElementException e) {
+		  	Reporter.log("Element doesn't exist");
+	  }
+	 
 	  
 	  AssertJUnit.assertFalse("Item wasn't deleted when clicked the delete button", isTestItemInCart);
   }

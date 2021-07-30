@@ -2,6 +2,7 @@ package com.WebPage.FeatureTest;
 
 import org.testng.annotations.Test;
 import org.testng.AssertJUnit;
+import org.testng.Reporter;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -32,10 +33,10 @@ public class FooterTest extends FeatureTest{
 		  }
 		} 
 	  catch(NoSuchElementException e) {
-			System.out.println("Page has no footer information");
+			Reporter.log("Page has no footer information");
 		}
 	  catch (TimeoutException e) {
-			System.out.print("Page took too long to respond");
+		  	Reporter.log("Page took too long to respond");
 		}
 	  
 	  AssertJUnit.assertTrue("Footer information is not matching expected Information", result);	  
