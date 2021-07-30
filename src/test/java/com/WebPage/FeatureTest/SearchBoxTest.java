@@ -15,14 +15,14 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class SearchBoxTest extends FeatureTest{
 	
-	By searchBoxLocation = By.id("search_query_top");
-	By resultLocation = By.cssSelector("div.product-count");
-	By noResultWarningLocation = By.cssSelector("p.alert.alert-warning");
+	protected By searchBoxLocation = By.id("search_query_top");
+	protected By resultLocation = By.cssSelector("div.product-count");
+	protected By noResultWarningLocation = By.cssSelector("p.alert.alert-warning");
 
-	  @BeforeClass
-	  public void beforeSuite() {
-		  driver.get(API_BASE_URI);
-	  }
+	@BeforeClass
+	public void beforeClass() {
+	  driver.get(API_BASE_URI);
+	}
 	
 	private boolean isThereResults(String input) {
 		Boolean output = true;
@@ -34,11 +34,11 @@ public class SearchBoxTest extends FeatureTest{
 			searchBox.submit();
 		}
 		catch(NoSuchElementException e) {
-			Reporter.log("Search box element doesn't exist");
+			Reporter.log("[ERROR:] Search box element doesn't exist");
 			output= false;
 		}
 		catch (TimeoutException e) {
-			Reporter.log("Page didn't load correctly");
+			Reporter.log("[ERROR:] Page didn't load correctly");
 			output = false;
 		}
 		
@@ -51,10 +51,10 @@ public class SearchBoxTest extends FeatureTest{
 				wait.until(ExpectedConditions.presenceOfElementLocated(noResultWarningLocation));
 			}
 			catch(TimeoutException ex) {
-				Reporter.log("Page \"No Result\" banner didn't show up");
+				Reporter.log("[ERROR:] Page \"No Result\" banner didn't show up");
 				output= false;
 			}
-			Reporter.log("Page confirmed there was no result found");
+			Reporter.log("[ERROR:] Page confirmed there was no result found");
 			output= false;
 		}
 		
