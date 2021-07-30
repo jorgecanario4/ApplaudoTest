@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite parallel="tests" name="ApplaudoTechnicalExam">
+	<test thread-count="5" parallel="tests" name="WebPageTest">
+		<classes>
+			<class name="com.WebPage.FeatureTest.FooterTest" />
+			<class name="com.WebPage.FeatureTest.ShoppingCartTest" />
+			<class name="com.WebPage.FeatureTest.SearchBoxTest" />
+		</classes>
+	</test> <!-- WebPageTest -->
+	<test thread-count="5" parallel="tests" name="EndpointTest">
+		<classes>
+			<class name="com.BreakingBadAPI.EndpointTest.CharacterTest" />
+		</classes>
+	</test> <!-- WebPageTest -->
+</suite> <!-- ApplaudoTechnicalExam -->
