@@ -21,11 +21,9 @@ import java.util.List;
 public class ShoppingCartTest extends FeatureTest{
 	// Still pending some DRY principles improvement in this class
 	
-	/**
-	 * @value testItemProductName 	Since the ID in the HTML is something that not necessarily represent the ID of the element at the moment of purchase. The best way to identify the element is with its name and price. This variable contains the name of the element we've selected for testing purposes
-	 * @value testItemPrice			Since the ID in the HTML is something that not necessarily represent the ID of the element at the moment of purchase. The best way to identify the element is with its name and price. This variable contains the price of the element we've selected for testing purposes
-	 */
+	/** Since the ID in the HTML is something that not necessarily represent the ID of the element at the moment of purchase. The best way to identify the element is with its name and price. This variable contains the name of the element we've selected for testing purposes */
 	private String testItemProductName;
+	/** Since the ID in the HTML is something that not necessarily represent the ID of the element at the moment of purchase. The best way to identify the element is with its name and price. This variable contains the price of the element we've selected for testing purposes */
 	private String testItemPrice;
 	
 	

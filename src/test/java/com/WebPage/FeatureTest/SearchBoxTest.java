@@ -12,20 +12,17 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 
 /**
- * This class validate that searchbox is able to find elements offered by the web page.
+ * This class validate that search box is able to find elements offered by the web page.
  * @author Jorge Canario
  *
  */
 
 public class SearchBoxTest extends FeatureTest{
-	/**
-	 * @value searchBoxLocation			Is the locator for the search box in the HTML. It can change only if DEVs change this element ID in the HTML
-	 * @value resultLocation			Is the locator for the for the product count in the result page in the HTML. Basically, if no result's found there will be nothing to count and this can be a way for us to know that there were no results. It can change only if DEVs change this element ID in the HTML
-	 * @value noResultWarningLocation	Is the locator for the banner that informs that "there were no result" in the HTML. It can change only if DEVs change this element ID in the HTML
-	 * 
-	 */
+	/** Is the locator for the search box in the HTML. It can change only if DEVs change this element ID in the HTML */
 	private By searchBoxLocation = By.id("search_query_top");
+	/** Is the locator for the for the product count in the result page in the HTML. Basically, if no result's found there will be nothing to count and this can be a way for us to know that there were no results. It can change only if DEVs change this element ID in the HTML*/
 	private By resultLocation = By.cssSelector("div.product-count");
+	/** Is the locator for the banner that informs that "there were no result" in the HTML. It can change only if DEVs change this element ID in the HTML */
 	private By noResultWarningLocation = By.cssSelector("p.alert.alert-warning");
 	
 	/**

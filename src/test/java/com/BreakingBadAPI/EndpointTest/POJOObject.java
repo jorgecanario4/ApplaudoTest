@@ -6,14 +6,13 @@ package com.BreakingBadAPI.EndpointTest;
  *
  */
 public class POJOObject {
-	/**
-	 * @value SEPARATOR 	Is a variable used to split the data from a String. It's mainly an auxiliary variable.
-	 * @value csvNames		Is an auxiliary variable. It serves as some sort of queue that will processed when committed. It stores all the names saved without format
-	 * @value csvActors		Is an auxiliary variable. It serves as some sort of queue that will processed when committed. It stores all the actors saved without format
-	 */
+	/** Is a variable used to split the data from a String. It's mainly an auxiliary variable. */
 	private final String SEPARATOR = "::";
+	/** Is an auxiliary variable. It serves as some sort of queue that will processed when committed. It stores all the names saved without format */
 	private String csvNames = "";
+	/** Is an auxiliary variable. It serves as some sort of queue that will processed when committed. It stores all the actors saved without format */
 	private String csvActors = "";
+	/** It is the bidimensional array of String that will hold the name and the actor formatted correctly*/
 	private String[][] savedData;
 	
 	/**

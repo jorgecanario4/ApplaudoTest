@@ -21,11 +21,10 @@ import org.openqa.selenium.WebElement;
  */
 
 public class FooterTest extends FeatureTest{
-	/**
-	 * @value footerInformationLotation			Contains the locator to get to the footer's store infomation section. This location could change if developer change the ID of the element in the HTML
-	 * @value expectedFooterInformations		Contains a List with all the information we want to make sure is contained in the footer
-	 */
+	/** Contains the locator to get to the footer's store infomation section. This location could change if developer change the ID of the element in the HTML*/
 	private By footerInformationLotation = By.id("block_contact_infos"); 
+
+	/** Contains a List with all the information we want to make sure is contained in the footer*/
 	private ArrayList<String> expectedFooterInformations = new ArrayList<>(Arrays.asList("Store information\nSelenium Framework, Research Triangle Park, North Carolina, USA", 
               "Call us now: (347) 466-7432",
               "Email: support@seleniumframework.com" ));

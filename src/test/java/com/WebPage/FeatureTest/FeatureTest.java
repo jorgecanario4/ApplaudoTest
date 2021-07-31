@@ -24,17 +24,15 @@ import org.testng.annotations.AfterTest;
  *
  */
 public abstract class FeatureTest {
-	/**
-	 * @value API_BASE_URI	This value represents the web page URI for the test and is supposed to not be changed by any means
-	 * @value driver 		This is the variable that controls the browser driver. Based on the architecture is expected that only one instance of the driver should be running, unless defined inside a child class
-	 * @value action 		All child class must perform some actions with the elements inside the page. This variable offers the possibility to perform actions. Variable is also static as it should be performing actions inside the only driver available.
-	 * @value jsExecutor 	Child class will need to perform some actions that are independent from the elements of the page. Thus, this variable offers the possibility to do so
-	 * @value wait			Is a variable that allows child classes to wait explicitly or fluently
-	 */
+	/** This value represents the web page URI for the test that isn't supposed to be changed by any means in this URL: {@value} .*/
 	protected final String API_BASE_URI = "http://automationpractice.com/index.php";
+	/** This is the variable that controls the browser driver. Based on the architecture is expected that only one instance of the driver should be running, unless defined inside a child class	 */
 	protected static WebDriver driver;
+	/** Is a variable that allows child classes to wait explicitly or fluently */
 	protected static WebDriverWait wait;
+	/** All child class must perform some actions with the elements inside the page. This variable offers the possibility to perform actions. Variable is also static as it should be performing actions inside the only driver available. */
 	protected static Actions action;
+	/** Child class will need to perform some actions that are independent from the elements of the page. Thus, this variable offers the possibility to do so */
 	protected static JavascriptExecutor jsExecutor;
 	
 	/**

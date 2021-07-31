@@ -11,20 +11,17 @@ import java.util.Arrays;
 import java.util.Iterator;
 
 /**
- * This class is in charge of the testing of the API that involves the characters endpoint
+ * This class is in charge of the testing of the API that involves the characters endpoint.
  * 
  * @author Jorge Canario
  *
  */
 public class CharacterTest {
-	/**
-	 * 
-	 * @value API_BASE_URI			Specifies the main URL from where all other endpoint will operate
-	 * @value CHARACTERS_BY_NAME	Specifies the characters endpoint using a filter by name function
-	 * @value ALL_CHARACTERS		Specifies the characters endpoint using no filter at all
-	 */
+	/** Specifies the main URL from where all other endpoint will operate */
 	private final String API_BASE_URI = "https://www.breakingbadapi.com/api";
+	/** Specifies the characters endpoint using a filter by name function */
 	private final String CHARACTERS_BY_NAME = "/characters?name=";
+	/** Specifies the characters endpoint using no filter at all */
 	private final String ALL_CHARACTERS = "/characters";
 	
 	/**
